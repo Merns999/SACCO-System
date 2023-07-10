@@ -23,7 +23,7 @@ We did a class project, which is a web-based SACCO management system developed u
     git clone git@github.com:Merns999/SACCO-System.git
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [Apache License](LICENSE.md)
 
 ## Contact
 For any questions or suggestions, please feel free to contact me through my GitHub profile.
