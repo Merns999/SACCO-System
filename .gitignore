@@ -365,3 +365,5 @@ FodyWeavers.xsd
 # Ignore app settings files
 appsettings.Development
 appsettings
+/SACCO System/appsettings.json
+/SACCO System/appsettings.Development.json
