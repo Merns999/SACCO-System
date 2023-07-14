@@ -39,7 +39,7 @@ CREATE TABLE DepositType (
 
 -- Create Deposit Table
 CREATE TABLE Deposit (
-    Deposit_ID INT PRIMARY KEY,
+    Deposit_ID CHAR(36) PRIMARY KEY,
     Account_Number INT,
     Amount DECIMAL(18, 2),
     Deposit_Type_ID INT,
@@ -52,7 +52,7 @@ CREATE TABLE Deposit (
 
 -- Create Withdrawal Table
 CREATE TABLE Withdrawal (
-    Withdrawal_ID INT PRIMARY KEY,
+    Withdrawal_ID CHAR(36) PRIMARY KEY,
     Account_Number INT,
     Amount DECIMAL(18, 2),
     Phone_Number VARCHAR(20),
@@ -64,7 +64,7 @@ CREATE TABLE Withdrawal (
 
 -- Create Loan Application Table
 CREATE TABLE Loan_Application (
-    Loan_Application_ID INT PRIMARY KEY,
+    Loan_Application_ID CHAR(36) PRIMARY KEY,
     Member_ID INT,
     Guarantor VARCHAR(255),
     Type_Of_Loan VARCHAR(255),
@@ -80,14 +80,15 @@ CREATE TABLE Loan_Application (
 -- Create Guarantor Table
 CREATE TABLE Guarantor (
     Guarantor_ID INT PRIMARY KEY,
-    Loan_ID INT,
+    Loan_ID CHAR(36),
     Member_ID INT,
     FOREIGN KEY (Member_ID) REFERENCES Member(Member_ID)
+	--GUARANTOR ID SHOULD REFERENCE A MEMEBER id TOO
 );
 
 -- Create Loan Table
 CREATE TABLE Loan (
-    Loan_ID INT PRIMARY KEY,
+    Loan_ID CHAR(36) PRIMARY KEY,
     Loan_Application_ID INT,
     Type_Of_Loan VARCHAR(255),
     Annual_Income INT,
@@ -104,12 +105,14 @@ CREATE TABLE Loan (
 );
 
 -- Add a foreign key to the guarantor table that references the loan table
+
 ALTER TABLE Guarantor ADD FOREIGN KEY (Loan_ID) REFERENCES Loan(Loan_ID);
 
 
 -- Create Dividend Table
+--change the id to char(36)
 CREATE TABLE Dividend (
-    Dividend_ID INT PRIMARY KEY,
+    Dividend_ID CHAR(36) PRIMARY KEY,
     Account_Number INT,
     Amount DECIMAL(18, 2),
     Time_stamp DATETIME,
@@ -120,7 +123,7 @@ CREATE TABLE Dividend (
 
 -- Create Shareholder Table
 CREATE TABLE Shareholder (
-    Shareholder_ID INT PRIMARY KEY,
+    Shareholder_ID CHAR(36) PRIMARY KEY,
     Member_ID INT,
     Share_Count INT,
     FOREIGN KEY (Member_ID) REFERENCES Member(Member_ID)
@@ -128,7 +131,7 @@ CREATE TABLE Shareholder (
 
 -- Create ShareTransfer Table
 CREATE TABLE Share_Transfer (
-    Transfer_ID INT PRIMARY KEY,
+    Transfer_ID CHAR(36) PRIMARY KEY,
     Sender_Account_Number INT,
     Receiver_Account_Number INT,
     Share_Count INT,
@@ -139,7 +142,7 @@ CREATE TABLE Share_Transfer (
 
 -- Create DividendPayment Table
 CREATE TABLE Dividend_Payment (
-    Dividend_Payment_ID INT PRIMARY KEY,
+    Dividend_Payment_ID CHAR(36) PRIMARY KEY,
     Dividend_ID INT,
     Account_Number INT,
     Amount DECIMAL(18, 2),
@@ -150,7 +153,7 @@ CREATE TABLE Dividend_Payment (
 
 -- Create DeleteRequest Table
 CREATE TABLE Delete_Request (
-    Delete_Request_ID INT PRIMARY KEY,
+    Delete_Request_ID CHAR(36) PRIMARY KEY,
     Account_Number INT,
     Time_stamp DATETIME,
     FOREIGN KEY (Account_Number) REFERENCES Account(Account_Number)
@@ -164,6 +167,8 @@ CREATE TABLE Admin (
     Email VARCHAR(255),
 	password VARCHAR(100)
 );
+
+ALTER TABLE Deposit ADD FOREIGN KEY (Deposit_Type_ID) REFERENCES DepositType(Deposit_Type_ID);
 
 
 

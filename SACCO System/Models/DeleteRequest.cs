@@ -5,7 +5,15 @@ namespace SACCO_System.Models;
 
 public partial class DeleteRequest
 {
-    public int DeleteRequestId { get; set; }
+    public DeleteRequest(Guid guid, int accountNumber, DateTime utcNow, Account deleteRequestAccount)
+    {
+        DeleteRequestId = guid;
+        AccountNumber = accountNumber;
+        TimeStamp= utcNow;
+        AccountNumberNavigation = deleteRequestAccount;
+    }
+
+    public Guid DeleteRequestId { get; set; }
 
     public int? AccountNumber { get; set; }
 
