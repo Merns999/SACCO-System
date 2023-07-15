@@ -5,7 +5,7 @@ namespace SACCO_System.Repository.Deposits
 {
     public interface IDepositRepository
     {
-        Task<Deposit> MakeDepositRequest(Deposit deposit);
-        Task<TransactionStatus> GetDepositTransactionStatus(Deposit deposit);
+        Task<TransactionStatus> MakeDepositRequest(Deposit deposit);
+        Task<string> GetDepositTransactionStatus(Deposit deposit);
     }
 }
