@@ -5,7 +5,7 @@ namespace SACCO_System.Models;
 
 public partial class Guarantor
 {
-    public int GuarantorId { get; set; }
+    public Guid GuarantorId { get; set; }
 
     public int? LoanId { get; set; }
 

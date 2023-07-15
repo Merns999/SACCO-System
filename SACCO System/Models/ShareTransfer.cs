@@ -5,7 +5,7 @@ namespace SACCO_System.Models;
 
 public partial class ShareTransfer
 {
-    public int TransferId { get; set; }
+    public Guid TransferId { get; set; }
 
     public int? SenderAccountNumber { get; set; }
 

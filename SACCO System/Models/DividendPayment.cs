@@ -5,9 +5,9 @@ namespace SACCO_System.Models;
 
 public partial class DividendPayment
 {
-    public int DividendPaymentId { get; set; }
+    public Guid DividendPaymentId { get; set; }
 
-    public int? DividendId { get; set; }
+    public Guid DividendId { get; set; }
 
     public int? AccountNumber { get; set; }
 

@@ -30,7 +30,6 @@ namespace SACCO_System.Repository.Deposits
 
         public async Task<TransactionStatus> MakeDepositRequest(Deposit deposit)
         {
-            //Todo: Format the deposit object
             try
             {
                 await _sharesidContext.Deposits

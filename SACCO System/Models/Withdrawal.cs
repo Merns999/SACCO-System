@@ -5,7 +5,7 @@ namespace SACCO_System.Models;
 
 public partial class Withdrawal
 {
-    public int WithdrawalId { get; set; }
+    public Guid WithdrawalId { get; set; }
 
     public int? AccountNumber { get; set; }
 

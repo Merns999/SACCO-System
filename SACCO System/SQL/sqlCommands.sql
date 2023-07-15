@@ -82,14 +82,15 @@ CREATE TABLE Guarantor (
     Guarantor_ID INT PRIMARY KEY,
     Loan_ID CHAR(36),
     Member_ID INT,
-    FOREIGN KEY (Member_ID) REFERENCES Member(Member_ID)
-	--GUARANTOR ID SHOULD REFERENCE A MEMEBER id TOO
+    FOREIGN KEY (Member_ID) REFERENCES Member(Member_ID),
+    FOREIGN KEY (Guarantor_ID) REFERENCES Member(Member_ID)
 );
+
 
 -- Create Loan Table
 CREATE TABLE Loan (
     Loan_ID CHAR(36) PRIMARY KEY,
-    Loan_Application_ID INT,
+    Loan_Application_ID CHAR(36),
     Type_Of_Loan VARCHAR(255),
     Annual_Income INT,
     Loan_Period INT,
@@ -110,7 +111,6 @@ ALTER TABLE Guarantor ADD FOREIGN KEY (Loan_ID) REFERENCES Loan(Loan_ID);
 
 
 -- Create Dividend Table
---change the id to char(36)
 CREATE TABLE Dividend (
     Dividend_ID CHAR(36) PRIMARY KEY,
     Account_Number INT,
@@ -143,7 +143,7 @@ CREATE TABLE Share_Transfer (
 -- Create DividendPayment Table
 CREATE TABLE Dividend_Payment (
     Dividend_Payment_ID CHAR(36) PRIMARY KEY,
-    Dividend_ID INT,
+    Dividend_ID CHAR(36),
     Account_Number INT,
     Amount DECIMAL(18, 2),
     Time_stamp DATETIME,
