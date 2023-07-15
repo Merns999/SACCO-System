@@ -78,7 +78,10 @@ namespace SACCO_System.Repository.Admins
 
                 if (adminToUpdate != null)
                 {
-                    adminToUpdate = admin;
+                    adminToUpdate.Name = admin.Name;
+                    adminToUpdate.Email = admin.Email;
+                    adminToUpdate.Password = admin.Password;
+                    adminToUpdate.PhoneNumber = admin.PhoneNumber;
 
                     await _sharesidSaccoContext.SaveChangesAsync();
                 }
