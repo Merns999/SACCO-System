@@ -3,6 +3,7 @@
     public enum Response
     {
         SUCCESS,
-        FAILED
+        FAILED,
+        NOT_FOUND
     }
 }
