@@ -134,7 +134,7 @@ CREATE TABLE Share_Transfer (
     Transfer_ID CHAR(36) PRIMARY KEY,
     Sender_Account_Number INT,
     Receiver_Account_Number INT,
-    Share_Count INT,
+    Share_Count DECIMAL,
     Time_stamp DATETIME,
     FOREIGN KEY (Sender_Account_Number) REFERENCES Account(Account_Number),
     FOREIGN KEY (Receiver_Account_Number) REFERENCES Account(Account_Number)

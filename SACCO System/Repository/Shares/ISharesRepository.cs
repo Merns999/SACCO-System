@@ -5,8 +5,8 @@ namespace SACCO_System.Repository.SharesRepository
 {
     public interface ISharesRepository
     {
-        Task<Shareholder> GetSharesByMemberId(Member member);
-        Task<Response> SharesTransferRequest(int sender_Account_number, int receiver_Account_Number, int shares);
+        Task<decimal?> GetSharesByMemberId(Member member);
+        Task<Response> SharesTransferRequest(Member sender_Member, Member receiver_Member, int shares);
         Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer);
     }
 }

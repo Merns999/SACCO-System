@@ -9,7 +9,7 @@ public partial class Shareholder
 
     public int? MemberId { get; set; }
 
-    public int? ShareCount { get; set; }
+    public decimal? ShareCount { get; set; }
 
     public virtual Member? Member { get; set; }
 }

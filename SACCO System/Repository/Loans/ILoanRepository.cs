@@ -9,6 +9,6 @@ namespace SACCO_System.Repository.Loans
         Task<Loan> GetLoanDetails(Member member);
         Task<IEnumerable<Member>> GetLoanGuarantors(Member member);
         Task<LoanApplicationStatus> GetLoanApplicationStatus(Member member);
-        Task<string> SetReasonForLoanRejection(Member member);
+        Task<string> SetReasonForLoanRejection(Member member, string reason);
     }
 }
