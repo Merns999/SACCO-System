@@ -85,8 +85,8 @@
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" href="#">Deposit</a>
                         <a class="collapse-item" href="#">Withdraw</a>
-                        <a class="collapse-item" href="#">Pay Loan</a>
-                        <a class="collapse-item" href="#">Request Loan</a>
+                        <a class="collapse-item" href="~/Loans/PayLoan">Pay Loan</a>
+                        <a class="collapse-item" href="~/Loans/RequestLoan">Request Loan</a>
                     </div>
                 </div>
             </li>
@@ -109,13 +109,11 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="/Users/ForgotPassword">Forgot Password</a>
+                        <a class="collapse-item" href="~/Users/ForgotPassword">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="#">Logout</a>
-                        <a class="collapse-item" href="#">404 Page</a>
-                        <a class="collapse-item" href="#">Blank Page</a>
+                        <a class="collapse-item" href="~/Terms">Terms & conditions</a>
+                        <a class="collapse-item" data-toggle="modal" data-target="#logoutModal" >Logout</a>
                     </div>
                 </div>
             </li>
@@ -131,11 +129,11 @@
                 <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Admin Collumn:</h6>
-                        <a class="collapse-item" href="/Users/regisiter">Register new Account</a>
+                        <a class="collapse-item" href="/Users/register">Register new Account</a>
                         <a class="collapse-item" href="/Admin/ManageAccounts">Manage Accounts</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="login.html">Logout</a>
+                        <a class="collapse-item" data-toggle="modal" data-target="#logoutModal">Logout</a>
                     </div>
                 </div>
             </li>
@@ -761,8 +759,8 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" href="~/Users/Login">Logout</a>
                 </div>
             </div>
         </div>
