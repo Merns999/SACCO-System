@@ -4,6 +4,7 @@
     {
         COMPLETED, 
         PENDING,
-        REJECTED
+        REJECTED,
+        NOT_FOUND
     }
 }

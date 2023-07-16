@@ -5,7 +5,7 @@ namespace SACCO_System.Repository.Withdrawals
 {
     public interface IWithdrawalRepository
     {
-        Task<Withdrawal> MakeWithdrawalRequest(Withdrawal request);
-        Task<TransactionStatus> CheckWithdrawalTransactionStatus(Withdrawal request);
+        Task<Response> MakeWithdrawalRequest(Withdrawal request);
+        Task<string?> CheckWithdrawalTransactionStatus(Member member);
     }
 }
