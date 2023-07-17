@@ -12,10 +12,13 @@ namespace SACCO_System.Repository.Shares
 
         public SharesRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
-        //public async Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer)
-        //{
-          
-        //}
+        public async Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer)
+        {
+            //The shares transfer table needs some modifications;
+    
+            await _sharesidSaccoContext.ShareTransfers.FindAsync(shareTransfer);                        
+            return Response.FAILED;
+        }
 
         public async Task<decimal?> GetSharesByMemberId(Member member)
         {
@@ -52,12 +55,9 @@ namespace SACCO_System.Repository.Shares
                     var shareTransfer = new ShareTransfer
                     {
                         TransferId = Guid.NewGuid().ToString(),
-                        SenderMemberID = sender_Member.MemberId,
-                        ReceiverMemberID = receiver_Member.MemberId,
-                        ShareCount = senderShares,
-                        TimeStamp = DateTime.Now
-                    };
 
+
+                    };
                     await _sharesidSaccoContext.ShareTransfers
                         .AddAsync(shareTransfer);
 
