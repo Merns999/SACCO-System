@@ -7,15 +7,15 @@ public partial class ShareTransfer
 {
     public Guid TransferId { get; set; }
 
-    public int? SenderAccountNumber { get; set; }
+    public int? SenderMemberID { get; set; }
 
-    public int? ReceiverAccountNumber { get; set; }
+    public int? ReceiverMemberID { get; set; }
 
     public int? ShareCount { get; set; }
 
     public DateTime? TimeStamp { get; set; }
 
-    public virtual Account? ReceiverAccountNumberNavigation { get; set; }
+    public virtual Member? ReceiverMemberIDNavigation { get; set; }
 
-    public virtual Account? SenderAccountNumberNavigation { get; set; }
+    public virtual Member? SenderMemberIDNavigation { get; set; }
 }

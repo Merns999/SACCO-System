@@ -364,25 +364,25 @@ public partial class SharesidSaccoContext : DbContext
 
             entity.ToTable("share_transfer");
 
-            entity.HasIndex(e => e.ReceiverAccountNumber, "Receiver_Account_Number");
+            entity.HasIndex(e => e.ReceiverMemberID, "Receiver_Member_ID");
 
-            entity.HasIndex(e => e.SenderAccountNumber, "Sender_Account_Number");
+            entity.HasIndex(e => e.SenderMemberID, "Sender_Member_ID");
 
             entity.Property(e => e.TransferId)
                 .ValueGeneratedNever()
                 .HasColumnName("Transfer_ID");
-            entity.Property(e => e.ReceiverAccountNumber).HasColumnName("Receiver_Account_Number");
-            entity.Property(e => e.SenderAccountNumber).HasColumnName("Sender_Account_Number");
+            entity.Property(e => e.ReceiverMemberID).HasColumnName("Receiver_Member_ID");
+            entity.Property(e => e.SenderMemberID).HasColumnName("Sender_Member_ID");
             entity.Property(e => e.ShareCount).HasColumnName("Share_Count");
             entity.Property(e => e.TimeStamp)
                 .HasColumnType("datetime")
                 .HasColumnName("Time_stamp");
 
-            entity.HasOne(d => d.ReceiverAccountNumberNavigation).WithMany(p => p.ShareTransferReceiverAccountNumberNavigations)
+            entity.HasOne(d => d.ReceiverMemberIDNavigation).WithMany(p => p.ShareTransferReceiverMemberIDNavigations)
                 .HasForeignKey(d => d.ReceiverAccountNumber)
                 .HasConstraintName("share_transfer_ibfk_2");
 
-            entity.HasOne(d => d.SenderAccountNumberNavigation).WithMany(p => p.ShareTransferSenderAccountNumberNavigations)
+            entity.HasOne(d => d.SenderMemberIDNavigation).WithMany(p => p.ShareTransferSenderMemberIDNavigations)
                 .HasForeignKey(d => d.SenderAccountNumber)
                 .HasConstraintName("share_transfer_ibfk_1");
         });

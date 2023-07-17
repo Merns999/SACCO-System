@@ -132,12 +132,12 @@ CREATE TABLE Shareholder (
 -- Create ShareTransfer Table
 CREATE TABLE Share_Transfer (
     Transfer_ID CHAR(36) PRIMARY KEY,
-    Sender_Account_Number INT,
-    Receiver_Account_Number INT,
+    Sender_Member_ID INT,
+    Receiver_Member_ID INT,
     Share_Count DECIMAL,
     Time_stamp DATETIME,
-    FOREIGN KEY (Sender_Account_Number) REFERENCES Account(Account_Number),
-    FOREIGN KEY (Receiver_Account_Number) REFERENCES Account(Account_Number)
+    FOREIGN KEY (Sender_Member_ID) REFERENCES Member(Member_ID),
+    FOREIGN KEY (Receiver_Member_ID) REFERENCES Member(Member_ID)
 );
 
 -- Create DividendPayment Table

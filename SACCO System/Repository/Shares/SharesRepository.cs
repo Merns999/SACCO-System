@@ -16,7 +16,7 @@ namespace SACCO_System.Repository.Shares
         {
             //The shares transfer table needs some modifications;
     
-            await _sharesidSaccoContext.ShareTransfers.FindAsync(shareTransfer);
+            await _sharesidSaccoContext.ShareTransfers.FindAsync(shareTransfer);                        
             return Response.FAILED;
         }
 
