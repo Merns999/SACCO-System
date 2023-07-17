@@ -2,7 +2,6 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
-using SACCO_System.Repository.SharesRepository;
 
 namespace SACCO_System.Repository.Shares
 {
@@ -12,13 +11,10 @@ namespace SACCO_System.Repository.Shares
 
         public SharesRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
-        public async Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer)
-        {
-            //The shares transfer table needs some modifications;
-    
-            await _sharesidSaccoContext.ShareTransfers.FindAsync(shareTransfer);                        
-            return Response.FAILED;
-        }
+        //public async Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer)
+        //{
+
+        //}
 
         public async Task<decimal?> GetSharesByMemberId(Member member)
         {
@@ -30,7 +26,8 @@ namespace SACCO_System.Repository.Shares
                     .FirstOrDefaultAsync();
 
                 return shares;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return null;
             }
@@ -50,14 +47,17 @@ namespace SACCO_System.Repository.Shares
                 //      ->is less than or equal to the number of shares being transferred
                 //      ->will be greater than or equal to 0 when the shares being transferred will be removed from the sender's shares
 
-                if(senderShares != null && senderShares <= shares && (senderShares - shares) >= 0)
+                if (senderShares != null && senderShares <= shares && (senderShares - shares) >= 0)
                 {
                     var shareTransfer = new ShareTransfer
                     {
                         TransferId = Guid.NewGuid().ToString(),
-
-
+                        SenderMemberID = sender_Member.MemberId,
+                        ReceiverMemberID = receiver_Member.MemberId,
+                        ShareCount = senderShares,
+                        TimeStamp = DateTime.Now
                     };
+
                     await _sharesidSaccoContext.ShareTransfers
                         .AddAsync(shareTransfer);
 
@@ -69,7 +69,8 @@ namespace SACCO_System.Repository.Shares
                 {
                     return Response.FAILED;
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return Response.FAILED;
             }

@@ -2,7 +2,7 @@
 using SACCO_System.Models;
 using SACCO_System.Repository.RepositoryBase;
 
-namespace SACCO_System.Repository.MemberRepository
+namespace SACCO_System.Repository.Members
 {
     public interface IMemberRepository
     {

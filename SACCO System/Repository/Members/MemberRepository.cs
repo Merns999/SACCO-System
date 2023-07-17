@@ -3,11 +3,11 @@ using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
 
-namespace SACCO_System.Repository.MemberRepository
+namespace SACCO_System.Repository.Members
 {
     public class MemberRepository : IMemberRepository
     {
-        private SharesidSaccoContext _sharesidSaccoContext;
+        private readonly SharesidSaccoContext _sharesidSaccoContext;
         public MemberRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
         public async Task<Response> AddMember(Member member)

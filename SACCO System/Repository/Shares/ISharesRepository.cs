@@ -1,7 +1,7 @@
 ﻿using SACCO_System.Enumerables;
 using SACCO_System.Models;
 
-namespace SACCO_System.Repository.SharesRepository
+namespace SACCO_System.Repository.Shares
 {
     public interface ISharesRepository
     {

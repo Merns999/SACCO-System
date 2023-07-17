@@ -7,7 +7,7 @@ namespace SACCO_System.Repository.Deposits
 {
     public class DepositRepository : IDepositRepository
     {
-        private SharesidSaccoContext _sharesidContext;
+        private readonly SharesidSaccoContext _sharesidContext;
 
         public DepositRepository(SharesidSaccoContext sharesidContext) => _sharesidContext = sharesidContext;
 

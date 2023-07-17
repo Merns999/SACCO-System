@@ -8,7 +8,7 @@ namespace SACCO_System.Repository.Admins
 {
     public class AdminRepository : IAdminRepository
     {
-        private SharesidSaccoContext _sharesidSaccoContext;
+        private readonly SharesidSaccoContext _sharesidSaccoContext;
 
         public AdminRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
