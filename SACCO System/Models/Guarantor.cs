@@ -7,7 +7,7 @@ public partial class Guarantor
 {
     public int GuarantorId { get; set; }
 
-    public Guid LoanId { get; set; }
+    public string? LoanId { get; set; }
 
     public int? MemberId { get; set; }
 

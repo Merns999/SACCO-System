@@ -125,7 +125,7 @@ CREATE TABLE Dividend (
 CREATE TABLE Shareholder (
     Shareholder_ID CHAR(36) PRIMARY KEY,
     Member_ID INT,
-    Share_Count INT,
+    Share_Count DECIMAL,
     FOREIGN KEY (Member_ID) REFERENCES Member(Member_ID)
 );
 

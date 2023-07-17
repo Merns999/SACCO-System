@@ -50,7 +50,7 @@ namespace SACCO_System.Repository.Accounts
                     .FirstOrDefaultAsync();
 
                 //Create the Delete Request field then pass it to the delete request table
-                var deleteRequest = new DeleteRequest(Guid.NewGuid(), deleteRequestAccount.AccountNumber, DateTime.UtcNow, deleteRequestAccount);
+                var deleteRequest = new DeleteRequest(Guid.NewGuid().ToString() , deleteRequestAccount.AccountNumber, DateTime.UtcNow, deleteRequestAccount);
 
                 var deleteResponse = await _sharesidSaccoContext.DeleteRequests
                     .AddAsync(deleteRequest);

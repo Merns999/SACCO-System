@@ -32,4 +32,7 @@ public partial class Member
     public virtual ICollection<LoanApplication> LoanApplications { get; set; } = new List<LoanApplication>();
 
     public virtual ICollection<Shareholder> Shareholders { get; set; } = new List<Shareholder>();
+
+    public ICollection<ShareTransfer>? ShareTransferReceiverMemberIDNavigations { get; set; }
+    public ICollection<ShareTransfer>? ShareTransferSenderMemberIDNavigations { get; set; }
 }

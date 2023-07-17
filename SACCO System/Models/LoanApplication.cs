@@ -5,7 +5,7 @@ namespace SACCO_System.Models;
 
 public partial class LoanApplication
 {
-    public Guid LoanApplicationId { get; set; }
+    public string? LoanApplicationId { get; set; }
 
     public int? MemberId { get; set; }
 

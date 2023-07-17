@@ -379,11 +379,11 @@ public partial class SharesidSaccoContext : DbContext
                 .HasColumnName("Time_stamp");
 
             entity.HasOne(d => d.ReceiverMemberIDNavigation).WithMany(p => p.ShareTransferReceiverMemberIDNavigations)
-                .HasForeignKey(d => d.ReceiverAccountNumber)
+                .HasForeignKey(d => d.ReceiverMemberID)
                 .HasConstraintName("share_transfer_ibfk_2");
 
             entity.HasOne(d => d.SenderMemberIDNavigation).WithMany(p => p.ShareTransferSenderMemberIDNavigations)
-                .HasForeignKey(d => d.SenderAccountNumber)
+                .HasForeignKey(d => d.SenderMemberID)
                 .HasConstraintName("share_transfer_ibfk_1");
         });
 

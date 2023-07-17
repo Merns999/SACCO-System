@@ -7,6 +7,6 @@ namespace SACCO_System.Repository.SharesRepository
     {
         Task<decimal?> GetSharesByMemberId(Member member);
         Task<Response> SharesTransferRequest(Member sender_Member, Member receiver_Member, int shares);
-        Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer);
+        //Task<Response> ConfirmSharesTransfer(ShareTransfer shareTransfer);
     }
 }

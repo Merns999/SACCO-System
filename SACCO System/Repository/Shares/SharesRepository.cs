@@ -52,10 +52,9 @@ namespace SACCO_System.Repository.Shares
 
                 if(senderShares != null && senderShares <= shares && (senderShares - shares) >= 0)
                 {
-                    //Changes to be made to the sharesTransfer Table and model to accomodate member to member transfer not account to account transfer
                     var shareTransfer = new ShareTransfer
                     {
-                        TransferId = Guid.NewGuid(),
+                        TransferId = Guid.NewGuid().ToString(),
 
 
                     };

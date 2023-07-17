@@ -5,7 +5,7 @@ namespace SACCO_System.Models;
 
 public partial class Shareholder
 {
-    public Guid ShareholderId { get; set; }
+    public string? ShareholderId { get; set; }
 
     public int? MemberId { get; set; }
 
