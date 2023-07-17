@@ -2,7 +2,7 @@
 {
     public class DeleteRequest
     {
-        int DeleteRequestId { get; set; }
+        decimal DeleteRequestId { get; set; }
         int AccountNumber { get; set; }
     }
 }
