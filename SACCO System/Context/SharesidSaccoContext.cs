@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.DotNet.Scaffolding.Shared;
 using Microsoft.EntityFrameworkCore;
 using SACCO_System.Models;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace SACCO_System.Data;
 
-public partial class SharesidSaccoContext : DbContext
+public partial class SharesidSaccoContext : IdentityDbContext
 {
     public SharesidSaccoContext()
     {
