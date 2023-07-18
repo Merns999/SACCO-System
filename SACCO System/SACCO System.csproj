@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\asset\vendor\**" />
+    <Content Remove="wwwroot\asset\vendor\**" />
+    <EmbeddedResource Remove="wwwroot\asset\vendor\**" />
+    <None Remove="wwwroot\asset\vendor\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
 
