@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Member
+public partial class Member : IEntity
 {
     public int MemberId { get; set; }
 

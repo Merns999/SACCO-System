@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class ShareTransfer
+public partial class ShareTransfer : IEntity
 {
     public string? TransferId { get; set; }
 

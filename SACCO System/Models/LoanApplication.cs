@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class LoanApplication
+public partial class LoanApplication : IEntity
 {
     public string? LoanApplicationId { get; set; }
 

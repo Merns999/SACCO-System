@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Deposit
+public partial class Deposit : IEntity
 {
     public string? DepositId { get; set; }
 

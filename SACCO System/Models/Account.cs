@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Account
+public partial class Account : IEntity
 {
     public int AccountNumber { get; set; }
 

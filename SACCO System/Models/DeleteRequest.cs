@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class DeleteRequest
+public partial class DeleteRequest : IEntity
 {
     public DeleteRequest(string guid, int accountNumber, DateTime utcNow, Account deleteRequestAccount)
     {

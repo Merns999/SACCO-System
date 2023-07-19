@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Shareholder
+public partial class Shareholder : IEntity
 {
     public string? ShareholderId { get; set; }
 

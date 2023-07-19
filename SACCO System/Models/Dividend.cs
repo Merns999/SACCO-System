@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Dividend
+public partial class Dividend : IEntity
 {
     public string? DividendId { get; set; }
 

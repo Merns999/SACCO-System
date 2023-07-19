@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Guarantor
+public partial class Guarantor : IEntity
 {
     public int GuarantorId { get; set; }
 

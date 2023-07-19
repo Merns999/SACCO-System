@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SACCO_System.Models;
 
-public partial class Withdrawal
+public partial class Withdrawal : IEntity
 {
     public string? WithdrawalId { get; set; }
 
