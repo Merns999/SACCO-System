@@ -1,14 +1,18 @@
 ﻿using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 using System.Data.Entity;
 
 namespace SACCO_System.Repository.Accounts
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository :  RepositoryBase<Account, SharesidSaccoContext>, IAccountRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;
-        public AccountRepository(SharesidSaccoContext sharesidSaccoContext) { _sharesidSaccoContext = sharesidSaccoContext; }
+        public AccountRepository(SharesidSaccoContext sharesidSaccoContext) : base(sharesidSaccoContext)
+        {
+            _sharesidSaccoContext = sharesidSaccoContext;
+        }
 
         public async Task<LockStatus> CheckLockStatus(Member member)
         {

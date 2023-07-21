@@ -1,15 +1,16 @@
 ﻿using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 using System.Data.Entity;
 
 namespace SACCO_System.Repository.Deposits
 {
-    public class DepositRepository : IDepositRepository
+    public class DepositRepository : RepositoryBase<Deposit, SharesidSaccoContext>, IDepositRepository
     {
         private readonly SharesidSaccoContext _sharesidContext;
 
-        public DepositRepository(SharesidSaccoContext sharesidContext) => _sharesidContext = sharesidContext;
+        public DepositRepository(SharesidSaccoContext sharesidContext) : base(sharesidContext) => _sharesidContext = sharesidContext;
 
         public async Task<string> GetDepositTransactionStatus(Deposit deposit)
         {

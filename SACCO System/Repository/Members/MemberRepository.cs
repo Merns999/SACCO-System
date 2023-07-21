@@ -2,13 +2,14 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 
 namespace SACCO_System.Repository.Members
 {
-    public class MemberRepository : IMemberRepository
+    public class MemberRepository : RepositoryBase<Member, SharesidSaccoContext>,  IMemberRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;
-        public MemberRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
+        public MemberRepository(SharesidSaccoContext sharesidSaccoContext) : base(sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
         public async Task<Response> AddMember(Member member)
         {

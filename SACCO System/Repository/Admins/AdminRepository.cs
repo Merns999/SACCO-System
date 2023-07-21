@@ -2,15 +2,16 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 using System.Data.Entity;
 
 namespace SACCO_System.Repository.Admins
 {
-    public class AdminRepository : IAdminRepository
+    public class AdminRepository : RepositoryBase<Admin, SharesidSaccoContext>, IAdminRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;
 
-        public AdminRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
+        public AdminRepository(SharesidSaccoContext sharesidSaccoContext) : base(sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
         public async Task<Response> AddAdministrator(Admin admin)
         {

@@ -2,14 +2,15 @@
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
 using System.Data.Entity;
+using SACCO_System.Repository.Base;
 
 namespace SACCO_System.Repository.Loans
 {
-    public class LoanRepository : ILoanRepository
+    public class LoanRepository : RepositoryBase<Loan, SharesidSaccoContext>,  ILoanRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;
 
-        public LoanRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
+        public LoanRepository(SharesidSaccoContext sharesidSaccoContext) : base(sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
         public async Task<string?> GetLoanApplicationStatus(Member member)
         {

@@ -2,7 +2,7 @@
 using SACCO_System.Data;
 using SACCO_System.Models;
 
-namespace SACCO_System.Repository.RepositoryBase
+namespace SACCO_System.Repository.Base
 {
     public abstract class RepositoryBase<TEntity, TContext> : IRepositoryBase<TEntity>
         where TEntity : class, IEntity
@@ -10,7 +10,7 @@ namespace SACCO_System.Repository.RepositoryBase
     {
         private readonly TContext _context;
 
-        protected RepositoryBase(TContext context) => _context = context;
+        public RepositoryBase(TContext context) => _context = context;
 
         
 

@@ -2,9 +2,13 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 
 namespace SACCO_System.Repository.Shares
 {
+    //SharesRepository uses two class types (ShareTransfer, Shareholder) for the business functionality.
+    //It cannot automatically inherit from the base Repository class.
+    //The manifest for this Repository(ISharesRepository) is inheriting the Base Repository Interface(IRepositoryBase)
     public class SharesRepository : ISharesRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;

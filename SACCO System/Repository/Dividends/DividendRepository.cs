@@ -2,14 +2,15 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 
 namespace SACCO_System.Repository.Dividends
 {
-    public class DividendRepository : IDividendRepository
+    public class DividendRepository : RepositoryBase<Dividend, SharesidSaccoContext>, IDividendRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;
 
-        public DividendRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
+        public DividendRepository(SharesidSaccoContext sharesidSaccoContext) : base(sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
         public async Task<Response> AddDividend(Dividend dividend)
         {

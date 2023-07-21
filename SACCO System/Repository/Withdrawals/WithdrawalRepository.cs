@@ -2,14 +2,15 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
+using SACCO_System.Repository.Base;
 
 namespace SACCO_System.Repository.Withdrawals
 {
-    public class WithdrawalRepository : IWithdrawalRepository
+    public class WithdrawalRepository : RepositoryBase<Withdrawal, SharesidSaccoContext>, IWithdrawalRepository
     {
         private readonly SharesidSaccoContext _sharesidSaccoContext;
 
-        public WithdrawalRepository(SharesidSaccoContext sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
+        public WithdrawalRepository(SharesidSaccoContext sharesidSaccoContext) : base(sharesidSaccoContext) => _sharesidSaccoContext = sharesidSaccoContext;
 
         public async Task<string?> CheckWithdrawalTransactionStatus(Member member)
         {
