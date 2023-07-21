@@ -88,5 +88,5 @@ VALUES
 
 INSERT INTO Admin (Admin_ID, Name, Phone_Number, Email, password)
 VALUES
-    (1, 'Admin User', '+1112223333', 'admin@example.com', 'admin_pass'),
-    (2, 'Super Admin', '+4445556666', 'superadmin@example.com', 'super_pass');
+    (1, 'Admin User', '+254773829563', 'admin@example.com', 'admin_pass'),
+    (2, 'Super Admin', '+254736957362', 'superadmin@example.com', 'super_pass');
