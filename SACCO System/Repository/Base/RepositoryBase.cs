@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SACCO_System.Data;
 using SACCO_System.Models;
+using SACCO_System.Repository.RepositoryBase;
 
 namespace SACCO_System.Repository.Base
 {
