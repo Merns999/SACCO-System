@@ -1,4 +1,4 @@
-﻿var Register = {
+﻿var login = {
     init: function () {
         try {
             var ViewModel = function () {
@@ -111,3 +111,7 @@
         }
     }
 }
+$(document).ready(function () {
+    debugger
+    login.init();
+});
