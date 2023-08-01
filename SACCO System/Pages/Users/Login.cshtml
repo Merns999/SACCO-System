@@ -40,11 +40,11 @@
                                     <form class="user">
                                         <div class="form-group">
                                             <input type="number" class="form-control form-control-user"
-                                                   id="exampleIdNo" aria-describedby="emailHelp"
+                                                   id="exampleIdNo" data-bind="value:IdNo" aria-describedby="emailHelp"
                                                    placeholder="Enter Id Number">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" data-bind="value:Password" class="form-control form-control-user"
                                                    id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -56,7 +56,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <a href="/Users/UserFront" class="btn btn-primary btn-user btn-block">
+                                        <a data-bind="click: LoginUser" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <hr>
@@ -95,5 +95,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/knockout-3.5.1.js"></script>
 
 </body>

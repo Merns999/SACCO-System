@@ -2,25 +2,25 @@
     init: function () {
         try {
             var ViewModel = function () {
+                var self = this;
 
-                this.FirstName = ko.observable();
-                this.Email = ko.observable();
-                this.Password = ko.observable();
-                this.RePassword = ko.observable();
-                this.hasError = ko.observable(false);
-                this.errorMessage = ko.observable();
+                self.FirstName = ko.observable();
+                self.IdNo = ko.observable();
+                self.Email = ko.observable();
+                self.Password = ko.observable();
+                self.hasError = ko.observable(false);
+                self.errorMessage = ko.observable();
 
 
 
                 this.validate = function () {
-                    var self = this;
-                    
-                    if (self.Email() == null) {
-                        this.showErrorMessage("Validation Failed", "Email can not be empty");
+                    debugger;
+                    if (self.IdNo() == null) {
+                        this.showErrorMessage("Validation Failed", "ID can not be empty");
                         return false;
                     }
                     else if (self.Password() == null) {
-                        this.showErrorMessage("Validation Failed", "Your Passwords do not match");
+                        this.showErrorMessage("Validation Failed", "Your Passwords cannot be ");
                         return false;
                     }
 
@@ -28,7 +28,6 @@
                 this.showErrorMessage = function (title, message) {
                     try {
                         this.hasError(true);
-                        //this.errorMessage(title + ':' + message);
                         this.showOkAlertBox(title, message, "red", null);
 
                     }
@@ -37,81 +36,64 @@
                     }
                 }
                 this.showOkAlertBox = function (title, message, color, onOkCallbackMethod) {
-                    $.confirm({
-                        icon: 'icon-exclamation',
-                        type: color,
-                        useBootstrap: false,
-                        width: 'auto',
-
-                        typeAnimated: true,
-                        title: title,
-                        content: message,
-                        buttons: {
-                            confirm: {
-                                btnClass: 'btn-green',
-                                text: 'Ok',//yes button
-                                action: function () {
-                                    if (onOkCallbackMethod)
-                                        onOkCallbackMethod();
-                                }
-                            },
-                        }
-                    });
+                    alert(title + " : " + message);
+                    debugger;
+                    window.location.href = "/Users/Login";
                 }
 
-                if (this.AccType() == "Savings") {
-                    this.RegisterSavings = function () {
-                        var self = this;
-                        if (self.validate() == false) {
-                            return;
-                        }
-
-                        this.hasError(false);
-
-                        self.data = {
-                            FirstName: self.FirstName(),
-                            PhoneNo: self.PhoneNo(),
-                            Email: self.Email(),
-                            LastName: self.LastName(),
-                            IdNo: self.IdNo(),
-                            DateOB: self.DateOB(),
-                        };
-
-                        $.ajax({
-                            type: "POST",
-                            url: "/Register/Savings",
-                            dataType: "json",
-                            contentType: "application/json; charset=UTF-8",
-                            data: JSON.stringify(self.data),
-
-                        }).done(function (data) {
-                            try {
-                                authenticationHelper.navigateToPath("/Users/Login");
-
-                            }
-                            catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        }).fail(function (err) {
-                            try {
-                                self.hasError(true);
-                                var jdata = jQuery.parseJSON(err.responseText);
-                                self.showErrorMessage('Failed', jdata.Message);
-                            } catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        });
+                
+                this.LoginUser = function () {
+                    var self = this;
+                    debugger;
+                    if (self.validate() == false) {
+                        return;
                     }
+
+                    this.hasError(false);
+
+                    self.data = {
+                        IdNo: self.IdNo()
+                    };
+
+                    //$.ajax({
+                    //    type: "GET",
+                    //    url: "",//controller to perform a get into the users table using the id given
+                    //    dataType: "json",
+                    //    contentType: "application/json; charset=UTF-8",
+                    //    data: JSON.stringify(self.data),
+
+                    //}).done(function (data) {
+                    //    try {
+                    //        if (data.password == self.password()) {
+                    //debugger;
+                    /*AuthHelper.navigateToPath("/Users/UserFront");*/
+                    window.location.href = "/Users/UserFront";
+                    //sessionStorage.setItem('name', data.FirstName);
+                    //        }
+                    //    }
+                    //    catch (err) {
+                    //        self.showErrorMessage('Error', err.message);
+                    //    }
+                    //}).fail(function (err) {
+                    //    try {
+                    //        self.hasError(true);
+                    //        var jdata = jQuery.parseJSON(err.responseText);
+                    //        self.showErrorMessage('Failed', jdata.Message);
+                    //    } catch (err) {
+                    //        self.showErrorMessage('Error', err.message);
+                    //    }
+                    //});
                 }
-
-
             }
-        } catch (error) {
-
+            ko.applyBindings(new ViewModel());
+        }
+        catch (error) {
+            //ToDo: Implement catch
+            self.showErrorMessage('Error', error);
         }
     }
 }
 $(document).ready(function () {
-    debugger
+    debugger;
     login.init();
 });

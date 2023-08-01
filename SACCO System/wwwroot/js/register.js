@@ -11,11 +11,15 @@
                 self.Email = ko.observable();
                 self.IdNo = ko.observable();
                 self.DateOB = ko.observable();
-                self.AccType = ko.observableArray(["SAVINGS", "CURRENT", "INVESTMENT","LOAN"]);
+                self.AccType = ko.observableArray(['SAVINGS', 'INVESTMENT', 'LOAN']);
+                self.account = ko.observable();
                 self.Password = ko.observable();
                 self.RePassword = ko.observable();
                 self.hasError = ko.observable(false);
                 self.errorMessage = ko.observable();
+
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 
                 this.showErrorMessage = function (title, message) {
@@ -23,83 +27,67 @@
                         debugger;
                         this.hasError(true);
                         //this.errorMessage(title + ':' + message);
-                        this.showOkAlertBox(title, message, "red", null);
+                        this.showAlertBox(title, message, "red", null);
 
                     }
                     catch (err) { 
-                        this.showOkAlertBox(title, err.message, "red", null);
+                        this.showAlertBox(title, err.message, "red", null);
                     }
                 }
-                this.showOkAlertBox = function (title, message, color, onOkCallbackMethod) {
+                this.showAlertBox = function (title, message, color, onOkCallbackMethod) {
+                    alert(title + " : " + message);
+                    debugger;
+                    window.location.href = "/Users/register";
+                }
+                this.showConfirmBox = function (title, message, color, onOkCallbackMethod) {
                     debugger;
                     var ans = confirm(title + " : " + message);
                     if (ans) {
-                        authenticationHelper.navigateToPath("/Users/Login");
+                        debugger;
+                        window.location.href = "/Users/Userfront";
                     }
                 }
-                //this.showOkAlertBox = function (title, message, onOkCallbackMethod) {
-                //    debugger;
-                //    var confirmDialog = document.createElement('div');
-                //    confirmDialog.classList.add('confirm-dialog');
-                //    confirmDialog.innerHTML = `<div class="confirm-dialog-content">
-                //                                      <h3 class="confirm-dialog-title">${title}</h3>
-                //                                      <p class="confirm-dialog-message">${message}</p>
-                //                                      <div class="confirm-dialog-buttons">
-                //                                        <button class="confirm-dialog-button btn-green" onclick="onOkCallbackMethod()">Ok</button>
-                //                                        <button class="confirm-dialog-button btn-default" onclick="confirmDialog.remove()">Cancel</button>
-                //                                      </div>
-                //                                    </div>
-                //                                  `;
-
-                //    document.body.appendChild(confirmDialog);
-                //    confirmDialog.addEventListener('click', function (event) {
-                //        if (event.target.classList.contains('confirm-dialog-button')) {
-                //            confirmDialog.remove();
-                //        }
-                //    });
-                //}
-
-                //showOkAlertBox('Are you sure?', 'This action cannot be undone.', function () {
-                //    // Do something when the user clicks "Ok".
-                //    authenticationHelper.navigateToPath("/Users/Login");
-                //});
-
                 this.validate = function () {
                     var self = this;
+                    var pass = self.Password();
                     if (self.FirstName() == null) {
-                        this.showErrorMessage("Validation Failed", "First name can not be empty");
+                        self.showErrorMessage("Validation Failed", "First name can not be empty");
                         return false;
                     }
                     else if (self.LastName() == null) {
-                        this.showErrorMessage("Validation Failed", "Last name can not be empty");
+                        self.showErrorMessage("Validation Failed", "Last name can not be empty");
                         return false;
                     }
                     else if (self.Email() == null) {
-                        this.showErrorMessage("Validation Failed", "Email can not be empty");
+                        self.showErrorMessage("Validation Failed", "Email can not be empty");
                         return false;
                     }
+                    //else if (emailPattern.test(self.Email)) {
+                    //    self.showErrorMessage("Validation Failed", "Email is not in the correct format");
+                    //    return false;
+                    //}
                     else if (self.PhoneNo() == null) {
-                        this.showErrorMessage("Validation Failed", "Phone Number can not be empty");
+                        self.showErrorMessage("Validation Failed", "Phone Number can not be empty");
                         return false;
                     }
                     else if (self.IdNo() == null) {
-                        this.showErrorMessage("Validation Failed", "Id Number can not be empty");
+                        self.showErrorMessage("Validation Failed", "Id Number can not be empty");
                         return false;
                     }
                     else if (self.AccType() == null) {
-                        this.showErrorMessage("Validation Failed", "You have to choose the type of account");
+                        self.showErrorMessage("Validation Failed", "You have to choose the type of account");
                         return false;
                     }
                     else if (self.DateOB() == null) {
-                        this.showErrorMessage("Validation Failed", "Fill in your Date Of Birth");
-                        return false;
-                    }
-                    else if (self.DateOB() == null) {
-                        this.showErrorMessage("Validation Failed", "Fill in your Date Of Birth");
+                        self.showErrorMessage("Validation Failed", "Fill in your Date Of Birth");
                         return false;
                     }
                     else if (self.Password() != self.RePassword()) {
-                        this.showErrorMessage("Validation Failed", "Your Passwords do not match");
+                        self.showErrorMessage("Validation Failed", "Your Passwords do not match");
+                        return false;
+                    }
+                    else if (!passwordPattern.test(pass)) {
+                        self.showErrorMessage("Validation Failed", "Your Passwords do not meet the criteria");
                         return false;
                     }
 
@@ -112,7 +100,9 @@
                     if (self.validate() == false) {
                         return;
                     }
-                    if (self.AccType() == "SAVINGS") {
+                    let acc = self.AccType();
+                    debugger;
+                    if (self.account() == "SAVINGS") {
                         this.hasError(false);
                         debugger;
                         self.data = {
@@ -122,34 +112,37 @@
                             IdNo: self.IdNo(),
                             Email: self.Email(),
                             DateOB: self.DateOB(),
+                            Password: self.Password()
                         };
 
-                        $.ajax({
-                            type: "POST",
-                            url: "/Register/Savings",//where the controller url goes
-                            dataType: "json",
-                            contentType: "application/json; charset=UTF-8",
-                            data: JSON.stringify(self.data),
+                        //$.ajax({
+                        //    type: "POST",
+                        //    url: "/Register/Savings",//where the controller url goes
+                        //    dataType: "json",
+                        //    contentType: "application/json; charset=UTF-8",
+                        //    data: JSON.stringify(self.data),
 
-                        }).done(function (data) {
-                            try {
-                                authenticationHelper.navigateToPath("/Users/Login");
-
-                            }
-                            catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        }).fail(function (err) {
-                            try {
-                                self.hasError(true);
-                                var jdata = jQuery.parseJSON(err.responseText);
-                                self.showErrorMessage('Failed', jdata.Message);
-                            } catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        });
+                        //}).done(function (data) {
+                        //    try {
+                        //debugger;
+                        //        AuthHelper.navigateToPath("/Users/Login");
+                        window.location.href = "/Users/Userfront";
+                        sessionStorage.setItem('name', self.FirstName());
+                        //    }
+                        //    catch (err) {
+                        //        self.showErrorMessage('Error', err.message);
+                        //    }
+                        //}).fail(function (err) {
+                        //    try {
+                        //        self.hasError(true);
+                        //        var jdata = jQuery.parseJSON(err.responseText);
+                        //        self.showErrorMessage('Failed', jdata.Message);
+                        //    } catch (err) {
+                        //        self.showErrorMessage('Error', err.message);
+                        //    }
+                        //});
                     }
-                    if (self.AccType() == "INVESTMENT") {
+                    if (self.account() == "INVESTMENT") {
                         this.hasError(false);
                         debugger;
                         self.data = {
@@ -161,32 +154,34 @@
                             DateOB: self.DateOB(),
                         };
 
-                        $.ajax({
-                            type: "POST",
-                            url: "/Register/Investment",//where the controller url goes
-                            dataType: "json",
-                            contentType: "application/json; charset=UTF-8",
-                            data: JSON.stringify(self.data),
+                        //$.ajax({
+                        //    type: "POST",
+                        //    url: "/Register/Investment",//where the controller url goes
+                        //    dataType: "json",
+                        //    contentType: "application/json; charset=UTF-8",
+                        //    data: JSON.stringify(self.data),
 
-                        }).done(function (data) {
-                            try {
-                                authenticationHelper.navigateToPath("/Users/Login");
+                        //}).done(function (data) {
+                        //    try {
+                        //        AuthHelper.navigateToPath("/Users/Login");
+                        window.location.href = "/Users/Userfront";
+                        sessionStorage.setItem('name', self.FirstName());
 
-                            }
-                            catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        }).fail(function (err) {
-                            try {
-                                self.hasError(true);
-                                var jdata = jQuery.parseJSON(err.responseText);
-                                self.showErrorMessage('Failed', jdata.Message);
-                            } catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        });
+                        //    }
+                        //    catch (err) {
+                        //        self.showErrorMessage('Error', err.message);
+                        //    }
+                        //}).fail(function (err) {
+                        //    try {
+                        //        self.hasError(true);
+                        //        var jdata = jQuery.parseJSON(err.responseText);
+                        //        self.showErrorMessage('Failed', jdata.Message);
+                        //    } catch (err) {
+                        //        self.showErrorMessage('Error', err.message);
+                        //    }
+                        //});
                     }
-                    if (self.AccType() == "LOAN") {
+                    if (self.account() == "LOAN") {
                         this.hasError(false);
                         debugger;
 
@@ -199,42 +194,45 @@
                             DateOB: self.DateOB(),
                         };
 
-                        $.ajax({
-                            type: "POST",
-                            url: "/Register/Loan",//where the controller url goes
-                            dataType: "json",
-                            contentType: "application/json; charset=UTF-8",
-                            data: JSON.stringify(self.data),
+                        //$.ajax({
+                        //    type: "POST",
+                        //    url: "/Register/Loan",//where the controller url goes
+                        //    dataType: "json",
+                        //    contentType: "application/json; charset=UTF-8",
+                        //    data: JSON.stringify(self.data),
 
-                        }).done(function (data) {
-                            try {
-                                debugger;
-                                authenticationHelper.navigateToPath("/Users/Login");
-
-                            }
-                            catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        }).fail(function (err) {
-                            try {
-                                self.hasError(true);
-                                var jdata = jQuery.parseJSON(err.responseText);
-                                self.showErrorMessage('Failed', jdata.Message);
-                            } catch (err) {
-                                self.showErrorMessage('Error', err.message);
-                            }
-                        });
+                        //}).done(function (data) {
+                        //    try {
+                        //        debugger;
+                        //        AuthHelper.navigateToPath("/Users/Login");
+                        window.location.href = "/Users/Userfront";
+                        sessionStorage.setItem('name', self.FirstName());
+                        //    }
+                        //    catch (err) {
+                        //        self.showErrorMessage('Error', err.message);
+                        //    }
+                        //}).fail(function (err) {
+                        //    try {
+                        //        self.hasError(true);
+                        //        var jdata = jQuery.parseJSON(err.responseText);
+                        //        self.showErrorMessage('Failed', jdata.Message);
+                        //    } catch (err) {
+                        //        self.showErrorMessage('Error', err.message);
+                        //    }
+                        //});
                     }
                 }
             }
             ko.applyBindings(new ViewModel());
-        } catch (error) {
-
+        }
+        catch (error) {
+            ///ToDo:Implement catch
+            self.showErrorMessage("Registration Failed", error);
         }
     }
 }
 
 $(document).ready(function () {
-    debugger;
+    //debugger;
     register.init();
 });

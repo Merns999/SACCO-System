@@ -348,7 +348,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ivy Bakhi</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="BakhiIvy"></span>
                                 <img class="img-profile rounded-circle"
                                      src="https://source.unsplash.com/Mv9hjnEUHR4/60x60">
                             </a>
@@ -679,7 +679,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="~/Users/Login">Logout</a>
+                    <a class="btn btn-danger" data-bind="click:logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -701,5 +701,14 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
-
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="/js/site.js"></script>
+    <script src="/js/knockout-3.5.1.js"></script>
+    @*<script>
+        var nameValue = sessionStorage.getItem('name');
+        var nameDisplayElement = document.getElementById('BakhiIvy');
+        nameDisplayElement.textContent = nameValue;
+    </script>*@
 </body>

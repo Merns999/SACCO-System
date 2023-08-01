@@ -2,6 +2,7 @@
     navigateToPath: function (url) {
         debugger;
         if (navigator.userAgent.match(/MSIE\s(?!9.0)/)) {
+            debugger;
             var referLink = document.createElement("a");
             referLink.href = url;
             document.body.appendChild(referLink);
@@ -11,4 +12,4 @@
             window.location.replace(url);
         }
     }
-    }
+}
