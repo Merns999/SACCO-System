@@ -45,10 +45,21 @@ namespace SACCO_System.Controllers
         [HttpPost, Route("SharesTransferRequest")]
         public async Task<IActionResult> SharesTransferRequest([FromBody] ShareTransfer request)
         {
+
             try
             {
-                var senderMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.SenderMemberID);
-                var receiverMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.ReceiverMemberID);
+                var senderMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.SenderMemberID ?? 0);
+                var receiverMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.ReceiverMemberID ?? 0);
+
+                if (senderMember == null)
+                {
+                    return NotFound("Sender is not a member of the SACCO.");
+                }
+
+                if (receiverMember == null)
+                {
+                    return NotFound("Receiver is not a member of the SACCO.");
+                }
 
                 var response = await repositoryWrapper.SharesRepository.SharesTransferRequest(senderMember, receiverMember, request.ShareCount ?? 0);
 

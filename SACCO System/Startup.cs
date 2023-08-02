@@ -12,11 +12,16 @@ builder.Services.AddDbContext<SharesidSaccoContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddScoped<RepositoryWrapper>();
-builder.Services.AddHttpClient();
+var app = builder.Build();
+builder.Services.AddDbContext<SharesidSaccoContext>(options => 
+options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")?? 
+throw new InvalidOperationException("The connection string is invalid")));
 
+builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

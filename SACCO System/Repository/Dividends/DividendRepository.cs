@@ -133,7 +133,7 @@ namespace SACCO_System.Repository.Dividends
                 {
                     return null;
                 }
-            }catch (Exception ex)
+            }catch (Exception)
             {
                 return null;
             }
@@ -162,7 +162,7 @@ namespace SACCO_System.Repository.Dividends
                 {
                     return Response.NOT_FOUND;
                 }
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 return Response.FAILED;
             }
