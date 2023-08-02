@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Belgrano&family=Raleway:wght@400;700&family=Wix+Madefor+Display&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Form </title>
+</head>
+
+<body>
+    <section >
+        <div class="container">
+            <form id="form">
+                <div class="one">
+                    <h1>Welcome to SACCO Systems</h1>
+                  </div>
+        
+                <div class="social">
+                    <div class="question">
+                        Already Have an Account? <br />
+                        <a href=""><span>Sign In</span></a>
+                    </div>
+                </div>
+                <div>
+                    <label for="username">User Name</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" id="username" placeholder="Your Name" />
+                    <i class="fas fa-exclamation-circle failure-icon"></i>
+                    <i class="far fa-check-circle success-icon"></i>
+                    <div class="error"></div>
+                </div>
+
+                <!-- /** 
+          * ! Email Input here
+         **/ -->
+
+                <div>
+                    <label for="email">Email</label>
+                    <i class="far fa-envelope"></i>
+                    <input type="email" name="email" id="email" placeholder="abc@gmail.com" />
+                    <i class="fas fa-exclamation-circle failure-icon"></i>
+                    <i class="far fa-check-circle success-icon"></i>
+                    <div class="error"></div>
+                </div>
+
+                <!-- /** 
+          * ! Password Input here
+         **/ -->
+
+                <div>
+                    <label for="password">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Password here" />
+                    <i class="fas fa-exclamation-circle failure-icon"></i>
+                    <i class="far fa-check-circle success-icon"></i>
+                    <div class="error"></div>
+                </div>
+
+                <button type="submit" id="submit">Submit</button>
+            </form>
+
+
+        </div>
+    </section>
+</body>
+<script src="script.js"></script>
+
+</html>
