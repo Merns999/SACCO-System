@@ -14,7 +14,7 @@ namespace SACCO_System.Controllers
 
         public DividendsController(RepositoryWrapper repositoryWrapper) => this.repositoryWrapper = repositoryWrapper;
 
-        [HttpPost, Route("api/Dividend/AddDividend")]
+        [HttpPost, Route("AddDividend")]
         public async Task<IActionResult> AddDividend([FromBody] Dividend dividend)
         {
             try
@@ -36,7 +36,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpDelete, Route("api/Dividend/DeleteDividend")]
+        [HttpDelete, Route("DeleteDividend")]
         public async Task<IActionResult> DeleteDividend([FromBody] Dividend dividend)
         {
             try
@@ -62,7 +62,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpDelete, Route("api/Dividend/DeleteMemberDividend /{memberId}")]
+        [HttpDelete, Route("DeleteMemberDividend /{memberId}")]
         public async Task<IActionResult> DeleteMemberDividend(int memberId)
         {
             try
@@ -89,7 +89,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Dividend/GetAllDividends")]
+        [HttpGet, Route("GetAllDividends")]
         public async Task<ActionResult<IEnumerable<Dividend>>> GetAllDividends()
         {
             try
@@ -103,7 +103,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Dividend/GetMemberDividendPaymentAmount/{memberId}")]
+        [HttpGet, Route("GetMemberDividendPaymentAmount/{memberId}")]
         public async Task<ActionResult<decimal?>> GetMemberDividendPaymentAmount(int memberId)
         {
             try
@@ -118,7 +118,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Dividend/GetMemberDividendStatus /{memberId}")]
+        [HttpGet, Route("GetMemberDividendStatus /{memberId}")]
         public async Task<ActionResult<string>> GetMemberDividendStatus(int memberId)
         {
             try
@@ -132,7 +132,7 @@ namespace SACCO_System.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
-        [HttpPut, Route("api/Dividend/UpdateDividend")]
+        [HttpPut, Route("UpdateDividend")]
         public async Task<Response> UpdateDividend(Dividend dividend)
         {
             try

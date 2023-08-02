@@ -1,7 +1,7 @@
-﻿using SACCO_System.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
-using System.Data.Entity;
 
 namespace SACCO_System.Repository.Deposits
 {

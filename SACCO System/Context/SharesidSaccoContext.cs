@@ -44,14 +44,12 @@ public partial class SharesidSaccoContext : DbContext
 
     public virtual DbSet<Withdrawal> Withdrawals { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("name=DefaultConnection", ServerVersion.Parse("8.0.32-mysql"));
+   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .UseCollation("utf8mb4_0900_ai_ci")
-            .HasCharSet("utf8mb4");
+            .UseCollation("utf8mb4_0900_ai_ci");
 
         modelBuilder.Entity<Account>(entity =>
         {
@@ -360,32 +358,38 @@ public partial class SharesidSaccoContext : DbContext
 
         modelBuilder.Entity<ShareTransfer>(entity =>
         {
-            entity.HasKey(e => e.TransferId).HasName("PRIMARY");
+            entity.HasKey(e => e.TransferId);
 
             entity.ToTable("share_transfer");
 
-            entity.HasIndex(e => e.ReceiverMemberID, "Receiver_Member_ID");
-
-            entity.HasIndex(e => e.SenderMemberID, "Sender_Member_ID");
-
             entity.Property(e => e.TransferId)
-                .ValueGeneratedNever()
                 .HasColumnName("Transfer_ID");
-            entity.Property(e => e.ReceiverMemberID).HasColumnName("Receiver_Member_ID");
-            entity.Property(e => e.SenderMemberID).HasColumnName("Sender_Member_ID");
-            entity.Property(e => e.ShareCount).HasColumnName("Share_Count");
+
+            entity.Property(e => e.ReceiverMemberID)
+                .HasColumnName("Receiver_Member_ID");
+
+            entity.Property(e => e.SenderMemberID)
+                .HasColumnName("Sender_Member_ID");
+
+            entity.Property(e => e.ShareCount)
+                .HasColumnName("Share_Count");
+
             entity.Property(e => e.TimeStamp)
                 .HasColumnType("datetime")
                 .HasColumnName("Time_stamp");
 
-            entity.HasOne(d => d.ReceiverMemberIDNavigation).WithMany(p => p.ShareTransferReceiverMemberIDNavigations)
+    
+            entity.HasOne(d => d.ReceiverMemberIDNavigation)
+                .WithMany(p => p.ShareTransferReceiverMemberIDNavigations)
                 .HasForeignKey(d => d.ReceiverMemberID)
-                .HasConstraintName("share_transfer_ibfk_2");
+                .HasConstraintName("share_transfer_receiver_fk"); 
 
-            entity.HasOne(d => d.SenderMemberIDNavigation).WithMany(p => p.ShareTransferSenderMemberIDNavigations)
+            entity.HasOne(d => d.SenderMemberIDNavigation)
+                .WithMany(p => p.ShareTransferSenderMemberIDNavigations)
                 .HasForeignKey(d => d.SenderMemberID)
-                .HasConstraintName("share_transfer_ibfk_1");
+                .HasConstraintName("share_transfer_sender_fk"); 
         });
+
 
         modelBuilder.Entity<Shareholder>(entity =>
         {

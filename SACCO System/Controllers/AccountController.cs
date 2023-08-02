@@ -15,7 +15,7 @@ namespace SACCO_System.Controllers
 
 
         [HttpGet]
-        [Route("api/Accounts/CheckLockStatus/{memberId}")]
+        [Route("CheckLockStatus/{memberId}")]
         public async Task<ActionResult<LockStatus>> CheckLockStatus(int memberId)
         {
             try
@@ -31,7 +31,7 @@ namespace SACCO_System.Controllers
         }
 
         [HttpGet]
-        [Route("api/Accounts/GetBalance/{memberId}")]
+        [Route("GetBalance/{memberId}")]
         public async Task<ActionResult<decimal?>> GetBalance(int memberId)
         {
             try
@@ -47,7 +47,7 @@ namespace SACCO_System.Controllers
         }
 
         [HttpGet]
-        [Route("api/Accounts/GetMemberAccountDetails/{memberId}")]
+        [Route("GetMemberAccountDetails/{memberId}")]
         public async Task<ActionResult<Account>> GetMemberAccountDetails(int memberId)
         {
             try
@@ -63,7 +63,7 @@ namespace SACCO_System.Controllers
         }
 
         [HttpPost]
-        [Route("api/Accounts/MakeDeleteRequest/{memberId}")]
+        [Route("MakeDeleteRequest/{memberId}")]
         public async Task<IActionResult> MakeDeleteRequest(int memberId)
         {
             try

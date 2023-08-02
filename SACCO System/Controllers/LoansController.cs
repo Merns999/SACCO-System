@@ -20,7 +20,7 @@ namespace SACCO_System.Controllers
             return new Member { MemberId = memberId };
         }
 
-        [HttpGet, Route("api/Loans/GetLoanApplicationStatus/{memberId}")]
+        [HttpGet, Route("GetLoanApplicationStatus/{memberId}")]
         public async Task<IActionResult> GetLoanApplicationStatus(int memberId)
         {
             try
@@ -43,7 +43,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Loans/GetLoanDetails/{memberId}")]
+        [HttpGet, Route("GetLoanDetails/{memberId}")]
         public async Task<IActionResult> GetLoanDetails(int memberId)
         {
             try
@@ -66,7 +66,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Loans/GetLoanGuarantors/{memberId}")]
+        [HttpGet, Route("GetLoanGuarantors/{memberId}")]
         public async Task<IActionResult> GetLoanGuarantors(int memberId)
         {
             try
@@ -89,7 +89,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpPost, Route("api/Loans/MakeLoanApplication")]
+        [HttpPost, Route("MakeLoanApplication")]
         public async Task<IActionResult> MakeLoanApplication([FromBody] LoanApplication loanApplication)
         {
             try
@@ -111,7 +111,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpPost, Route("api/Loans/SetReasonForLoanRejection/{memberId}")]
+        [HttpPost, Route("SetReasonForLoanRejection/{memberId}")]
         public async Task<IActionResult> SetReasonForLoanRejection(int memberId, [FromBody] string reason)
         {
             try

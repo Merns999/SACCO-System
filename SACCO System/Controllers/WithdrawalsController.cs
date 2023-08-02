@@ -20,7 +20,7 @@ namespace SACCO_System.Controllers
             return new Member { MemberId = memberId };
         }
 
-        [HttpGet, Route("api/Withdrawals/CheckWithdrawalTransactionStatus/{memberId}")]
+        [HttpGet, Route("CheckWithdrawalTransactionStatus/{memberId}")]
         public async Task<IActionResult> CheckWithdrawalTransactionStatus(int memberId)
         {
             try
@@ -43,7 +43,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpPost, Route("api/Withdrawals/MakeWithdrawalRequest")]
+        [HttpPost, Route("MakeWithdrawalRequest")]
         public async Task<IActionResult> MakeWithdrawalRequest([FromBody] Withdrawal withdrawal)
         {
             try

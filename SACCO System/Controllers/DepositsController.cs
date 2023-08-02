@@ -15,7 +15,7 @@ namespace SACCO_System.Controllers
         public DepositsController(RepositoryWrapper repositoryWrapper) => this.repositoryWrapper = repositoryWrapper;
 
         [HttpGet]
-        [Route("api/Deposits/GetDepositTransactionStatus/{depositId}")]
+        [Route("GetDepositTransactionStatus/{depositId}")]
         public async Task<ActionResult<string>> GetDepositTransactionStatus(int depositId)
         {
             try
@@ -39,7 +39,7 @@ namespace SACCO_System.Controllers
         }
 
         [HttpPost]
-        [Route("api/Deposits/MakeDepositRequest")]
+        [Route("MakeDepositRequest")]
         public async Task<IActionResult> MakeDepositRequest([FromBody] Deposit deposit)
         {
             try

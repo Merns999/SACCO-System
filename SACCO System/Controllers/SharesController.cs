@@ -19,7 +19,7 @@ namespace SACCO_System.Controllers
             return new Member { MemberId = memberId };
         }
 
-        [HttpGet, Route("api/Shares/GetSharesByMemberId/{memberId}")]
+        [HttpGet, Route("GetSharesByMemberId/{memberId}")]
         public async Task<IActionResult> GetSharesByMemberId(int memberId)
         {
             try
@@ -42,7 +42,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpPost, Route("api/Shares/SharesTransferRequest")]
+        [HttpPost, Route("SharesTransferRequest")]
         public async Task<IActionResult> SharesTransferRequest([FromBody] ShareTransfer request)
         {
             try

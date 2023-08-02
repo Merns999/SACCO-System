@@ -15,7 +15,7 @@ namespace SACCO_System.Controllers
         public AdministratorController(RepositoryWrapper repositoryWrapper) => this.repositoryWrapper = repositoryWrapper;
 
         // GET: api/<AdministratorController>
-        [HttpGet, Route("api/GetAdmin")]
+        [HttpGet, Route("GetAdmin")]
         public async Task<ActionResult<IEnumerable<Admin>>> Get()
         {
             try
@@ -36,7 +36,7 @@ namespace SACCO_System.Controllers
         }
 
         // POST api/<AdministratorController>
-        [HttpPost, Route("api/AddAdmin")]
+        [HttpPost, Route("AddAdmin")]
         public async Task<ActionResult> Post([FromBody] Admin admin)
         {
             try
@@ -54,7 +54,7 @@ namespace SACCO_System.Controllers
         }
 
         // PUT api/<AdministratorController>/5
-        [HttpPatch, Route("api/UpdateAdmin")]
+        [HttpPatch, Route("UpdateAdmin")]
         public async Task<ActionResult> Update([FromBody] Admin admin)
         {
             try
@@ -72,7 +72,7 @@ namespace SACCO_System.Controllers
         }
 
         // DELETE api/<AdministratorController>/5
-        [HttpDelete, Route("api/DeleteAdmin")]
+        [HttpDelete, Route("DeleteAdmin")]
         public async Task<IActionResult> Delete(int id)
         {
             try

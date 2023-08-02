@@ -20,7 +20,7 @@ namespace SACCO_System.Controllers
             return new Member { MemberId = memberId };
         }
 
-        [HttpPost, Route("api/Member/AddMember")]
+        [HttpPost, Route("AddMember")]
         public async Task<IActionResult> AddMember([FromBody] Member member)
         {
             try
@@ -42,7 +42,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Member/GetAllMembers")]
+        [HttpGet, Route("GetAllMembers")]
         public async Task<IActionResult> GetAllMembers()
         {
             try
@@ -56,7 +56,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Member/GetMemberById /{memberId}")]
+        [HttpGet, Route("GetMemberById /{memberId}")]
         public async Task<IActionResult> GetMemberById(int memberId)
         {
             try
@@ -78,7 +78,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Member/GetMemberByName/{name}")]
+        [HttpGet, Route("GetMemberByName/{name}")]
         public async Task<IActionResult> GetMemberByName(string name)
         {
             try
@@ -101,7 +101,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpGet, Route("api/Member/GetMemberDetails/{memberId}")]
+        [HttpGet, Route("GetMemberDetails/{memberId}")]
         public async Task<IActionResult> GetMemberDetails(int memberId)
         {
             try
@@ -124,7 +124,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpPut, Route("api/Member/UpdateMember")]
+        [HttpPut, Route("UpdateMember")]
         public async Task<IActionResult> UpdateMember([FromBody] Member member)
         {
             try
@@ -147,7 +147,7 @@ namespace SACCO_System.Controllers
             }
         }
 
-        [HttpDelete, Route("api/Member/DeleteMember/{memberId}")]
+        [HttpDelete, Route("DeleteMember/{memberId}")]
         public async Task<IActionResult> DeleteMember(int memberId)
         {
             try
