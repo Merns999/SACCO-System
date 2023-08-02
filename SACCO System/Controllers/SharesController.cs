@@ -48,8 +48,8 @@ namespace SACCO_System.Controllers
 
             try
             {
-                var senderMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.SenderMemberID ?? 0);
-                var receiverMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.ReceiverMemberID ?? 0);
+                var senderMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.SenderMemberID);
+                var receiverMember = await repositoryWrapper.MemberRepository.GetMemberByID(request.ReceiverMemberID);
 
                 if (senderMember == null)
                 {
