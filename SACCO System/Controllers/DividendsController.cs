@@ -139,15 +139,14 @@ namespace SACCO_System.Controllers
             {
                 var dbDividend = await repositoryWrapper.DividendRepository.UpdateDividend(dividend);
 
-                if (dbDividend != null)
+                if (dbDividend == null)
                 {
-                   repositoryWrapper.Save();
-
-                   return Enumerables.Response.SUCCESS;
+                    return Enumerables.Response.NOT_FOUND;
                 }
                 else
                 {
-                    return Enumerables.Response.NOT_FOUND;
+                    repositoryWrapper.Save();
+                    return Enumerables.Response.SUCCESS;
                 }
             }
             catch (Exception)

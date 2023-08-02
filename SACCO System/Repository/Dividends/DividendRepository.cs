@@ -114,7 +114,7 @@ namespace SACCO_System.Repository.Dividends
         }
         public async Task<Member> GetMemberById(int memberId)
         {
-            return await _sharesidContext.Members.FindAsync(memberId);
+            return await _sharesidSaccoContext.Members.FindAsync(memberId);
         }
 
         public async Task<string?> GetMemberDividendStatus(Member member)
@@ -133,7 +133,7 @@ namespace SACCO_System.Repository.Dividends
                 {
                     return null;
                 }
-            }catch (Exception ex)
+            }catch (Exception)
             {
                 return null;
             }
@@ -162,7 +162,7 @@ namespace SACCO_System.Repository.Dividends
                 {
                     return Response.NOT_FOUND;
                 }
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 return Response.FAILED;
             }

@@ -33,7 +33,7 @@ namespace SACCO_System.Repository.Shares
             }
         }
 
-        public async Task<Response> SharesTransferRequest(Member sender_Member, Member receiver_Member, int shares)
+        public async Task<Response> SharesTransferRequest(Member sender_Member, Member receiver_Member, decimal shares)
         {
             try
             {
