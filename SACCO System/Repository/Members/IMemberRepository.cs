@@ -6,7 +6,7 @@ namespace SACCO_System.Repository.Members
 {
     public interface IMemberRepository
     {
-        Task<object> GetMemberByID(Member member);
+        Task<Member> GetMemberByID(int memberId);
         Task<IEnumerable<Member>> GetAllMembers();
         Task<Response> AddMember(Member member);
         Task<Response> UpdateMember(Member member);

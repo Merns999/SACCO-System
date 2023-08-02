@@ -37,6 +37,11 @@ namespace SACCO_System.Repository.Admins
 
             return fetchedAdmin;
         }
+        public async Task<Admin> GetAdminById(int adminId)
+        {
+            var fetchedAdmin = await _sharesidSaccoContext.Admins.FindAsync(adminId);
+            return fetchedAdmin;
+        }
 
         public async Task<IEnumerable<Admin>> GetAdmins()
         {

@@ -27,7 +27,7 @@ namespace SACCO_System.Repository.Shares
 
                 return shares;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -70,7 +70,7 @@ namespace SACCO_System.Repository.Shares
                     return Response.FAILED;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Response.FAILED;
             }

@@ -27,7 +27,10 @@ namespace SACCO_System.Repository.Deposits
                 return "Not Found";
             }
         }
-
+        public async Task<Deposit> GetDepositById(int depositId)
+        {
+            return await _sharesidContext.Deposits.FindAsync(depositId);
+        }
         public async Task<TransactionStatus> MakeDepositRequest(Deposit deposit)
         {
             try

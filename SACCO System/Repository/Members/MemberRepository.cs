@@ -21,7 +21,7 @@ namespace SACCO_System.Repository.Members
 
                 return Response.SUCCESS;
 
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 return Response.FAILED;
             }
@@ -44,7 +44,7 @@ namespace SACCO_System.Repository.Members
 
                 return Response.SUCCESS;
 
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 return Response.FAILED;
             }
@@ -58,19 +58,18 @@ namespace SACCO_System.Repository.Members
             return members;
         }
 
-        public async Task<object> GetMemberByID(Member member)
+        public async Task<Member> GetMemberByID(int memberId)
         {
             var dbMember = await _sharesidSaccoContext.Members
-                .Where(member => member.MemberId == member.MemberId)
+                .Where(member => member.MemberId == memberId)
                 .FirstOrDefaultAsync();
-            
-            if(dbMember != null)
+            if (dbMember == null)
             {
-                return dbMember;
+                throw new ArgumentException($"Member with ID {memberId} not found.");
             }
             else
             {
-                return "Member not found";
+                return dbMember;
             }
         }     
 
