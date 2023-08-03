@@ -6,6 +6,7 @@ namespace SACCO_System.Repository.Dividends
     public interface IDividendRepository
     {
         Task<string?> GetMemberDividendStatus(Member member);
+        Task<Member> GetMemberById(int memberId);
         Task<DividendCalculationMethod> GetMemberDividendCalculationMethod(Member member);
         Task<decimal?> GetMemberDividendPaymentAmount(Member member);
         Task<IEnumerable<Dividend>> GetAllDividends();

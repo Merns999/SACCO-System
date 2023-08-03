@@ -7,5 +7,6 @@ namespace SACCO_System.Repository.Deposits
     {
         Task<TransactionStatus> MakeDepositRequest(Deposit deposit);
         Task<string> GetDepositTransactionStatus(Deposit deposit);
+        Task<Deposit> GetDepositById(int depositId);
     }
 }

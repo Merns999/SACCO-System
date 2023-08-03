@@ -2,7 +2,6 @@
 using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
-using System.Data.Entity;
 
 namespace SACCO_System.Repository.Admins
 {
@@ -35,6 +34,11 @@ namespace SACCO_System.Repository.Admins
                 .Where(admin => admin.Equals(admin))
                 .FirstOrDefaultAsync();
 
+            return fetchedAdmin;
+        }
+        public async Task<Admin> GetAdminById(int adminId)
+        {
+            var fetchedAdmin = await _sharesidSaccoContext.Admins.FindAsync(adminId);
             return fetchedAdmin;
         }
 

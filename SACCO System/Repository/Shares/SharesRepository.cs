@@ -27,13 +27,13 @@ namespace SACCO_System.Repository.Shares
 
                 return shares;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
         }
 
-        public async Task<Response> SharesTransferRequest(Member sender_Member, Member receiver_Member, int shares)
+        public async Task<Response> SharesTransferRequest(Member sender_Member, Member receiver_Member, decimal shares)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace SACCO_System.Repository.Shares
                     return Response.FAILED;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Response.FAILED;
             }

@@ -8,6 +8,7 @@ namespace SACCO_System.Repository.Admins
         Task<Response> AddAdministrator(Admin admin);
         Task<Response> RemoveAdministrator(Admin admin);
         Task<Response> UpdateAdministrator(Admin admin);
+        Task <Admin> GetAdminById (int id);
         Task<Admin> GetAdministrator(Admin admin);
         Task<IEnumerable<Admin>> GetAdmins();
     }

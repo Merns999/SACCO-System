@@ -1,7 +1,7 @@
-﻿using SACCO_System.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
-using System.Data.Entity;
 
 namespace SACCO_System.Repository.Accounts
 {
@@ -40,6 +40,7 @@ namespace SACCO_System.Repository.Accounts
             return accDetails;
         }
 
+        //This method has an error
         public async Task<Response> MakeDeleteRequest(Member member)
         {
             try
@@ -49,11 +50,13 @@ namespace SACCO_System.Repository.Accounts
                     .Where(account => account.MemberId == member.MemberId)
                     .FirstOrDefaultAsync();
 
-                //Create the Delete Request field then pass it to the delete request table
-                var deleteRequest = new DeleteRequest(Guid.NewGuid().ToString() , deleteRequestAccount.AccountNumber, DateTime.UtcNow, deleteRequestAccount);
+                //to-do: Have a work around on this area
 
-                var deleteResponse = await _sharesidSaccoContext.DeleteRequests
-                    .AddAsync(deleteRequest);
+                //Create the Delete Request field then pass it to the delete request table
+                //var deleteRequest = new DeleteRequest(Guid.NewGuid().ToString() , deleteRequestAccount.AccountNumber, DateTime.UtcNow, deleteRequestAccount);
+
+                //var deleteResponse = await _sharesidSaccoContext.DeleteRequests
+                //    .AddAsync(deleteRequest);
 
                 await _sharesidSaccoContext.SaveChangesAsync();
 

@@ -5,7 +5,7 @@ namespace SACCO_System.Models;
 
 public partial class Deposittype
 {
-    public string? DepositTypeId { get; set; }
+    public string DepositTypeId { get; set; }
 
     public string? Name { get; set; }
 

@@ -1,7 +1,20 @@
+﻿using Microsoft.EntityFrameworkCore;
+using SACCO_System.Data;
+using SACCO_System.Repository.Wrapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddDbContext<SharesidSaccoContext>(options =>
+{
+    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddScoped<RepositoryWrapper>();
+builder.Services.AddHttpClient();
+
 
 var app = builder.Build();
 
@@ -21,5 +34,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
+
 
 app.Run();
+

@@ -1,7 +1,7 @@
-﻿using SACCO_System.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SACCO_System.Data;
 using SACCO_System.Enumerables;
 using SACCO_System.Models;
-using System.Data.Entity;
 
 namespace SACCO_System.Repository.Deposits
 {
@@ -27,7 +27,10 @@ namespace SACCO_System.Repository.Deposits
                 return "Not Found";
             }
         }
-
+        public async Task<Deposit> GetDepositById(int depositId)
+        {
+            return await _sharesidContext.Deposits.FindAsync(depositId);
+        }
         public async Task<TransactionStatus> MakeDepositRequest(Deposit deposit)
         {
             try
