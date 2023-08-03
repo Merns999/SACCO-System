@@ -4,7 +4,7 @@
     ViewData["Title"] = "Register page";
 }
 <head>
-
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     <!-- Custom fonts for this template-->
-    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
@@ -37,47 +37,69 @@
                             </div>
                             <form class="user">
                                 <div class="form-group row">
+                                    <div data-bind="visible:hasError">
+                                        <span style="color:red;" data-bind="text:errorMessage"></span>
+                                    </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" class="form-control form-control-user" data-bind="value:FirstName" id="exampleFirstName"
                                                placeholder="First Name">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input type="text" class="form-control form-control-user" data-bind="value:LastName" id="exampleLastName"
                                                placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" id="exampleNumber"
+                                        <input type="number" class="form-control form-control-user" data-bind="value:PhoneNo" id="exampleNumber"
                                                placeholder="Phone Number">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-user" id="exampleIdNo"
+                                        <input type="number" class="form-control form-control-user" data-bind="value:IdNo" id="exampleIdNo"
                                                placeholder="Id No">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="ui left pointing small label">
-                                        Date Of Birth!
+                                        &nbsp;&nbsp;&nbsp;Date Of Birth!
                                     </div>
-                                    <input type="date" class="form-control form-control-user" id="exampleDOB"
-                                           placeholder="&nbsp;&nbsp;Date Of Birth">
+                                    <input type="date" class="form-control form-control-user" data-bind="value:DateOB" id="exampleDOB"
+                                           placeholder="Date Of Birth">
                                 </div>
                                 <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" data-bind="value:Email" id="exampleInputEmail"
                                                placeholder="Email Address">  
+                                </div>
+                                <div class="form-group">
+                                    <div class="ui left pointing small label">
+                                        &nbsp;&nbsp;&nbsp;Account Type!
+                                    </div>
+                                    <select class="form-control form-control-user" data-bind="options:AccType, value: account" id="exampleAccType">
+                                        @*<option value="" selected disabled>Select Account Type!</option>*@
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">City</label>
+                                        <input type="text" class="form-control" id="inputCity" bata-bind="value:Address">
+                                    </div>
+            
+                                    <div class="form-group col-md-2">
+                                        <label for="inputZip">Zip</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user" data-bind="value:Password"
                                                id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user" data-bind="value:RePassword"
                                                id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a href="/Users/Login" class="btn btn-primary btn-user btn-block">
+                                <a data-bind="click: RegisterUser " class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </a>
                                 <hr>
@@ -102,15 +124,20 @@
         </div>
 
     </div>
+@section Scripts{
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/register.js"></script>
+        <script src="/js/knockout-3.5.1.js"></script>
+}
 
 </body>
