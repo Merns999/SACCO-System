@@ -115,32 +115,32 @@
                             Password: self.Password()
                         };
 
-                        //$.ajax({
-                        //    type: "POST",
-                        //    url: "/Register/Savings",//where the controller url goes
-                        //    dataType: "json",
-                        //    contentType: "application/json; charset=UTF-8",
-                        //    data: JSON.stringify(self.data),
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/Member/AddMember",//where the controller url goes
+                            dataType: "json",
+                            contentType: "application/json; charset=UTF-8",
+                            data: JSON.stringify(self.data),
 
-                        //}).done(function (data) {
-                        //    try {
-                        //debugger;
-                        //        AuthHelper.navigateToPath("/Users/Login");
-                        window.location.href = "/Users/Userfront";
-                        sessionStorage.setItem('name', self.FirstName());
-                        //    }
-                        //    catch (err) {
-                        //        self.showErrorMessage('Error', err.message);
-                        //    }
-                        //}).fail(function (err) {
-                        //    try {
-                        //        self.hasError(true);
-                        //        var jdata = jQuery.parseJSON(err.responseText);
-                        //        self.showErrorMessage('Failed', jdata.Message);
-                        //    } catch (err) {
-                        //        self.showErrorMessage('Error', err.message);
-                        //    }
-                        //});
+                        }).done(function (data) {
+                            try {
+                        debugger;
+                                //AuthHelper.navigateToPath("/Users/Login");
+                                window.location.href = "/Users/Userfront";
+                                //sessionStorage.setItem('name', self.FirstName());
+                            }
+                            catch (err) {
+                                self.showErrorMessage('Error', err.message);
+                            }
+                        }).fail(function (err) {
+                            try {
+                                self.hasError(true);
+                                var jdata = jQuery.parseJSON(err.responseText);
+                                self.showErrorMessage('Failed', jdata.Message);
+                            } catch (err) {
+                                self.showErrorMessage('Error', err.message);
+                            }
+                        });
                     }
                     if (self.account() == "INVESTMENT") {
                         this.hasError(false);
@@ -154,32 +154,32 @@
                             DateOB: self.DateOB(),
                         };
 
-                        //$.ajax({
-                        //    type: "POST",
-                        //    url: "/Register/Investment",//where the controller url goes
-                        //    dataType: "json",
-                        //    contentType: "application/json; charset=UTF-8",
-                        //    data: JSON.stringify(self.data),
+                        $.ajax({
+                            type: "post",
+                            url: "/register/investment",//where the controller url goes
+                            datatype: "json",
+                            contenttype: "application/json; charset=utf-8",
+                            data: json.stringify(self.data),
 
-                        //}).done(function (data) {
-                        //    try {
-                        //        AuthHelper.navigateToPath("/Users/Login");
-                        window.location.href = "/Users/Userfront";
-                        sessionStorage.setItem('name', self.FirstName());
+                        }).done(function (data) {
+                            try {
+                                //authhelper.navigatetopath("/users/login");
+                                //window.location.href = "/Users/Userfront";
+                                sessionStorage.setItem('name', self.FirstName());
 
-                        //    }
-                        //    catch (err) {
-                        //        self.showErrorMessage('Error', err.message);
-                        //    }
-                        //}).fail(function (err) {
-                        //    try {
-                        //        self.hasError(true);
-                        //        var jdata = jQuery.parseJSON(err.responseText);
-                        //        self.showErrorMessage('Failed', jdata.Message);
-                        //    } catch (err) {
-                        //        self.showErrorMessage('Error', err.message);
-                        //    }
-                        //});
+                            }
+                            catch (err) {
+                                self.showErrorMessage('Error', err.message);
+                            }
+                        }).fail(function (err) {
+                            try {
+                                self.hasError(true);
+                                var jdata = jQuery.parseJSON(err.responseText);
+                                self.showErrorMessage('Failed', jdata.Message);
+                            } catch (err) {
+                                self.showErrorMessage('Error', err.message);
+                            }
+                        });
                     }
                     if (self.account() == "LOAN") {
                         this.hasError(false);
