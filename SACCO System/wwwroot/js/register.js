@@ -15,6 +15,7 @@
                 self.account = ko.observable();
                 self.Password = ko.observable();
                 self.RePassword = ko.observable();
+                self.Address = ko.observable();
                 self.hasError = ko.observable(false);
                 self.errorMessage = ko.observable();
 
@@ -106,13 +107,14 @@
                         this.hasError(false);
                         debugger;
                         self.data = {
-                            FirstName: self.FirstName(),
-                            LastName: self.LastName(),
-                            PhoneNo: self.PhoneNo(),
-                            IdNo: self.IdNo(),
+                            Name: self.FirstName(),
+                            PhoneNumber: self.PhoneNo(),
+                            MemberId: self.IdNo(),
                             Email: self.Email(),
-                            DateOB: self.DateOB(),
-                            Password: self.Password()
+                            DateOfBirth: self.DateOB(),
+                            Password: self.Password(),
+                            MembershipStatus: self.MembershipStatus(),
+                            Address: self.Address()
                         };
 
                         $.ajax({
