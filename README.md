@@ -22,8 +22,24 @@ We did a class project, which is a web-based SACCO management system developed u
    ```bash
     git clone git@github.com:Merns999/SACCO-System.git
 
+## Contributing
+
+If you'd like to contribute to this project, you can follow these steps:
+
+1. Fork this repository.
+
+2. Create a new branch for your feature or bug fix.
+
 ## License
 This project is licensed under the [Apache License](LICENSE.md)
 
 ## Contact
 For any questions or suggestions, please feel free to contact me through my GitHub profile.
+
+
+
+
+
+
+
+
